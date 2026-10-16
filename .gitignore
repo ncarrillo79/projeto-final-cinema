@@ -1,0 +1,19 @@
+# Power BI: configuración local y caché
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+*.pbix
+!powerbi/entrega/*.pbix
+
+# Base SQLite (se recrea desde los .sql)
+*.db
+*.sqlite
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
