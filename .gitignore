@@ -4,10 +4,6 @@
 *.pbix
 !powerbi/entrega/*.pbix
 
-# Base SQLite (se recrea desde los .sql)
-*.db
-*.sqlite
-
 # Python
 __pycache__/
 .ipynb_checkpoints/
@@ -17,7 +13,3 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# Base SQLite (se recrea desde los .sql)
-*.db
-*.sqlite
