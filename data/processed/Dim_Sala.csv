@@ -1,0 +1,21 @@
+ID_Sala,Nome_Sala,Tipo_Sala,Capacidade
+1,Sala 1,Padrão,150
+2,Sala 2,Padrão,150
+3,Sala 3,Padrão,120
+4,Sala 4,3D XPLUS,200
+5,Sala 5,VIP,60
+6,Sala 6,Padrão,150
+7,Sala 7,3D XPLUS,200
+8,Sala 8,VIP,60
+9,Sala 9,Padrão,120
+10,Sala 10,Padrão,150
+11,Sala 11,IMAX,250
+12,Sala 12,Padrão,120
+13,Sala 13,3D XPLUS,200
+14,Sala 14,Padrão,150
+15,Sala 15,VIP,60
+16,Sala 16,Padrão,120
+17,Sala 17,3D XPLUS,200
+18,Sala 18,Padrão,150
+19,Sala 19,VIP,60
+20,Sala 20,IMAX,250

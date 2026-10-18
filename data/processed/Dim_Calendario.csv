@@ -1,0 +1,29 @@
+Data,Ano,Num_Mes,Mes,Dia,Num_Dia_Semana,Dia_Semana,Tipo_Dia,Semana
+2023-11-16,2023,11,Novembro,16,4,Quinta,Dia útil,1
+2023-11-17,2023,11,Novembro,17,5,Sexta,Dia útil,1
+2023-11-18,2023,11,Novembro,18,6,Sábado,Fim de semana,1
+2023-11-19,2023,11,Novembro,19,7,Domingo,Fim de semana,1
+2023-11-20,2023,11,Novembro,20,1,Segunda,Dia útil,1
+2023-11-21,2023,11,Novembro,21,2,Terça,Dia útil,1
+2023-11-22,2023,11,Novembro,22,3,Quarta,Dia útil,1
+2023-11-23,2023,11,Novembro,23,4,Quinta,Dia útil,2
+2023-11-24,2023,11,Novembro,24,5,Sexta,Dia útil,2
+2023-11-25,2023,11,Novembro,25,6,Sábado,Fim de semana,2
+2023-11-26,2023,11,Novembro,26,7,Domingo,Fim de semana,2
+2023-11-27,2023,11,Novembro,27,1,Segunda,Dia útil,2
+2023-11-28,2023,11,Novembro,28,2,Terça,Dia útil,2
+2023-11-29,2023,11,Novembro,29,3,Quarta,Dia útil,2
+2023-11-30,2023,11,Novembro,30,4,Quinta,Dia útil,3
+2023-12-01,2023,12,Dezembro,1,5,Sexta,Dia útil,3
+2023-12-02,2023,12,Dezembro,2,6,Sábado,Fim de semana,3
+2023-12-03,2023,12,Dezembro,3,7,Domingo,Fim de semana,3
+2023-12-04,2023,12,Dezembro,4,1,Segunda,Dia útil,3
+2023-12-05,2023,12,Dezembro,5,2,Terça,Dia útil,3
+2023-12-06,2023,12,Dezembro,6,3,Quarta,Dia útil,3
+2023-12-07,2023,12,Dezembro,7,4,Quinta,Dia útil,4
+2023-12-08,2023,12,Dezembro,8,5,Sexta,Dia útil,4
+2023-12-09,2023,12,Dezembro,9,6,Sábado,Fim de semana,4
+2023-12-10,2023,12,Dezembro,10,7,Domingo,Fim de semana,4
+2023-12-11,2023,12,Dezembro,11,1,Segunda,Dia útil,4
+2023-12-12,2023,12,Dezembro,12,2,Terça,Dia útil,4
+2023-12-13,2023,12,Dezembro,13,3,Quarta,Dia útil,4
