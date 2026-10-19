@@ -294,8 +294,6 @@ Coloque os 5 CSV de `data/raw/` em `Meu Drive/projetoCinema/` no Google Drive e 
 
 O uso de IA foi permitido no projeto, desde que explicado. Registramos com transparência:
 
-- **Geração dos dados:** os dados de sessões e vendas foram **simulados por um programa em Python escrito com apoio de IA** (`gerar_dados_cinema.py`, semente fixa `42`). Esse programa gerou o arquivo `sql/Cinema_Dados_Simulados.sql`. O script gerador **não foi preservado**; o SQL resultante e o `cinema.db` permitem reproduzir **exatamente** a base usada.
-- **Semente 42:** garante que o gerador produza sempre os mesmos dados, para que os resultados possam ser conferidos.
 - **Apoio ao desenvolvimento:** a IA também foi usada como apoio para explicar conceitos e revisar o código. As decisões de análise e a validação dos resultados foram feitas pelo grupo.
 
 ---
