@@ -193,14 +193,6 @@ erDiagram
 | `Fato_Venda_Ingresso` | Fato | 22.235 | Um ingresso por linha |
 | `Fato_Venda_Bomboniere` | Fato | 7.454 | Uma venda da bomboniere por linha |
 
-### Por que as vendas se ligam à sessão?
-
-1. **Reflete o processo real do cinema:** a venda sempre acontece para uma sessão.
-2. **Evita repetição:** filme, sala e data ficam uma única vez na sessão, e não em milhares de vendas.
-3. **A ocupação depende da sessão:** os lugares ofertados são calculados sessão por sessão (capacidade da sala × sessões).
-
-Por isso, em relação às vendas, `Fato_Sessao` funciona como uma dimensão, e o modelo se aproxima de um **floco de neve** (*snowflake*). Uma alternativa seria uma **constelação**, levando `ID_Filme`, `ID_Sala` e `Data` para as tabelas de vendas.
-
 ---
 
 ## 🧹 Tratamento e validação
