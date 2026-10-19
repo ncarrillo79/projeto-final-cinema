@@ -325,7 +325,9 @@ A branch `main` é protegida: **ninguém altera a `main` diretamente**.
 
 | Integrante | Papel |
 |---|---|
-| Norma Carrillo | Responsável pelo repositório |
+| Norma Fajardo | Responsável pelo repositório - Dashboard Power BI |
+| Eugenio Matheus | Colaborador do repositório - Criação banco de dados e inserir dados simulados|
+| Marcelino Issa |Colaborador do repositório - Python Importar e tratar dados GoogleColab |
 <!-- Adicione aqui os demais integrantes do grupo, uma linha por pessoa:
 | Nome Sobrenome | Papel |
 -->
