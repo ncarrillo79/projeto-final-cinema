@@ -1,0 +1,34 @@
+Los dos valores coinciden con SQL, Python y Excel: 51 Mil (50.940) y 43,6%. Eso confirma que funcionan las tres relaciones: sesión → sala, sesión → ingresos y la capacidad de cada sala.
+
+Insight para guardar: el cine vendió menos de la mitad de los asientos que ofreció. Por cada 10 asientos, unos 4 se ocuparon. Ese es el número que abre la presentación.
+
+ticket médio
+es el precio promedio que pagó cada persona en la entrada. Queda por debajo de R$ 30 a R$ 70 de las tablas de precios porque casi la mitad compró media entrada.
+
+Qué dice el gráfico
+    Hecho (verificado)_______________________Insight (interpretación)
+Sábado 60,2% y domingo 53,8%...............El fin de semana es el pico; ahí se gana el mês
+Lunes 23,7%................................El lunes la sala está 3/4 vacía
+Martes a jueves, entre 30% y 34%...........Mitad de semana estable, pero baja
+Sábado ≈ 2,5 × lunes.......................Hay mucha capacidad ociosa en días útiles
+
+Recomendación posible: promociones de lunes a jueves (por ejemplo, “segunda a preço único”) para mover público hacia los días vacíos.
+
+Recuerda decirle a la banca que los datos son simulados: el patrón viene de las reglas del generador, y la recomendación es un ejercicio de análisis.
+
+Siguiente gráfico: ocupación por horario
+
+Pregunta de negocio: ¿qué horario llena más las salas?
+
+
+gráfico 2 taxa de ocupação por hora
+
+Qué dice el gráfico
+Hecho____________________________________________________Insight
+19:00 → 55,8% y 21:30 → 53,1%..................La noche concentra el público
+14:00 → 25,4%..................................La sesión de la tarde está 3/4 vacía
+Noche ≈ 2 × tarde..............................La tarde es la mayor capacidad ociosa
+
+Combinado con el gráfico anterior: el peor escenario sería lunes a las 14:00, y el mejor, sábado por la noche.
+
+Recomendación posible: precio reducido o combo con bomboniere en la sesión de las 14:00 de días útiles.
