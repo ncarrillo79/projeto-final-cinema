@@ -1,0 +1,136 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "364928bb535f98609ee0",
+  "position": {
+    "x": 10,
+    "y": 0,
+    "z": 0,
+    "height": 280,
+    "width": 950,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Sessoes"
+                }
+              },
+              "queryRef": "_Medidas.Sessoes",
+              "nativeQueryRef": "Sessoes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Ingressos Vendidos"
+                }
+              },
+              "queryRef": "_Medidas.Ingressos Vendidos",
+              "nativeQueryRef": "Ingressos Vendidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Vendas Bomboniere"
+                }
+              },
+              "queryRef": "_Medidas.Vendas Bomboniere",
+              "nativeQueryRef": "Vendas Bomboniere"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Receita Ingressos"
+                }
+              },
+              "queryRef": "_Medidas.Receita Ingressos",
+              "nativeQueryRef": "Receita Ingressos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Receita Bomboniere"
+                }
+              },
+              "queryRef": "_Medidas.Receita Bomboniere",
+              "nativeQueryRef": "Receita Bomboniere"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Lugares Ofertados"
+                }
+              },
+              "queryRef": "_Medidas.Lugares Ofertados",
+              "nativeQueryRef": "Lugares Ofertados"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Taxa de Ocupacao"
+                }
+              },
+              "queryRef": "_Medidas.Taxa de Ocupacao",
+              "nativeQueryRef": "Taxa de Ocupacao"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Medidas"
+                    }
+                  },
+                  "Property": "Ticket Medio"
+                }
+              },
+              "queryRef": "_Medidas.Ticket Medio",
+              "nativeQueryRef": "Ticket Medio"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

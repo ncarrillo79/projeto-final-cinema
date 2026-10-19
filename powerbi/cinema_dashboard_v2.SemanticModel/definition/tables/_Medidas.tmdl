@@ -1,0 +1,121 @@
+table _Medidas
+	lineageTag: 86e75b12-4fd3-4003-a03f-c5f6cc331d51
+
+	measure Sessoes = COUNTROWS(Fato_Sessao)
+		formatString: 0
+		lineageTag: 7f001d97-a701-4224-9cbf-643f3552d609
+
+	measure 'Lugares Ofertados' = SUMX(Fato_Sessao, RELATED(Dim_Sala[Capacidade]))
+		formatString: 0
+		lineageTag: 7028f5ba-54be-4061-829a-b0c9b6f1a5f9
+
+	measure 'Receita Total' = [Receita Ingressos] + [Receita Bomboniere]
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 70a1600d-91ac-471a-a605-cf7ccd407687
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Taxa de Ocupacao' = DIVIDE([Ingressos Vendidos], [Lugares Ofertados])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 50c1a900-a992-417e-8462-6b5efac4b456
+
+	measure 'Receita Bomboniere' = SUM(Fato_Venda_Bomboniere[Valor_Total])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 1b7f7182-0b7b-4f72-a2bb-26dd9c91df08
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Ingressos Vendidos' = COUNTROWS(Fato_Venda_Ingresso)
+		formatString: 0
+		lineageTag: 0f77716e-3182-4b10-962c-b03db59b3402
+
+	measure 'Receita Ingressos' = SUM(Fato_Venda_Ingresso[Valor_Pago])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: b88f9426-949d-472e-a9ed-c9e8e6db2c89
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Ticket Medio' = DIVIDE([Receita Ingressos], [Ingressos Vendidos])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: bc01dbb6-fc4c-4211-9d82-69af930e290f
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Dias em Cartaz Medio' = AVERAGE(Fato_Sessao[Dias_Em_Cartaz])
+		lineageTag: 5e6ad292-dc65-4ad7-a7a4-52d140c1a6fc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Meia' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Ingressos Vendidos],
+			        KEEPFILTERS(Fato_Venda_Ingresso[Tipo_Ingresso] = "Meia")
+			    ),
+			    [Ingressos Vendidos]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 8cbe52b1-507e-4d11-aee4-c45ad807b324
+
+	measure 'Cor Dia Semana' =
+			
+			VAR atual  = [Taxa de Ocupacao]
+			VAR maximo =
+			    MAXX(
+			        ALLSELECTED(Dim_Calendario[Dia_Semana], Dim_Calendario[Num_Dia_Semana]),
+			        [Taxa de Ocupacao]
+			    )
+			RETURN IF(atual = maximo, "#F2B705", "#1F4E79")
+		lineageTag: 41e3b8e6-07f6-403d-9a71-7c83a6d8540c
+
+	measure 'Cor Horario' =
+			
+			VAR atual  = [Taxa de Ocupacao]
+			VAR maximo = MAXX(ALLSELECTED(Fato_Sessao[Hora]), [Taxa de Ocupacao])
+			RETURN IF(atual = maximo, "#F2B705", "#1F4E79")
+		lineageTag: 8c7e0d3e-123a-48e0-8fd1-24f2becf479a
+
+	measure 'Cor Tipo Sala' =
+			
+			VAR atual  = [Taxa de Ocupacao]
+			VAR maximo = MAXX(ALLSELECTED(Dim_Sala[Tipo_Sala]), [Taxa de Ocupacao])
+			RETURN IF(atual = maximo, "#F2B705", "#1F4E79")
+		lineageTag: f3ce558b-5221-4ada-b53d-3ff4ef4fb4cf
+
+	measure 'Cor Genero' =
+			
+			VAR atual  = [Taxa de Ocupacao]
+			VAR maximo = MAXX(ALLSELECTED(Dim_Filme[Genero]), [Taxa de Ocupacao])
+			RETURN IF(atual = maximo, "#F2B705", "#1F4E79")
+		lineageTag: b2ef8b7a-4f9d-40aa-a959-858d2cd9546c
+
+	measure 'Vendas Bomboniere' = COUNTROWS(Fato_Venda_Bomboniere)
+		formatString: #,0
+		lineageTag: 8460b1f2-d647-4800-9070-00fba8ea1c2f
+
+	measure '% Inteira' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Ingressos Vendidos],
+			        KEEPFILTERS(Fato_Venda_Ingresso[Tipo_Ingresso] = "Inteira")
+			    ),
+			    [Ingressos Vendidos]
+			)
+		lineageTag: 08670407-9f14-48c4-b5ad-e7aaeb974775
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition _Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

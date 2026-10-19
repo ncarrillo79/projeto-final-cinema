@@ -1,0 +1,102 @@
+table Dim_Calendario
+	lineageTag: 8ec804fb-8369-402d-a5f9-06e3e04aa24a
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7a3b18fa-30d4-4c99-bcf5-c965b6b252aa
+		summarizeBy: none
+		sourceColumn: Data
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 8499e422-edac-47de-b675-8403b528e8ae
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Num_Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d3d703f-81d5-4d15-b67e-0442f701d5ca
+		summarizeBy: sum
+		sourceColumn: Num_Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: string
+		lineageTag: 002a0ac4-8a05-4570-8a6a-210e8c947f2e
+		summarizeBy: none
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia
+		dataType: int64
+		formatString: 0
+		lineageTag: 28581e4f-5a69-4d6b-afa8-c67cdef8671e
+		summarizeBy: sum
+		sourceColumn: Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Num_Dia_Semana
+		dataType: int64
+		formatString: 0
+		lineageTag: 240d9b82-1ea4-4cd7-b594-d0a9f940a80b
+		summarizeBy: sum
+		sourceColumn: Num_Dia_Semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dia_Semana
+		dataType: string
+		lineageTag: d384d412-f17a-4557-beb6-b9d381032516
+		summarizeBy: none
+		sourceColumn: Dia_Semana
+		sortByColumn: Num_Dia_Semana
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Dia
+		dataType: string
+		lineageTag: dc6ff321-c71c-40dc-9656-b459e623db95
+		summarizeBy: none
+		sourceColumn: Tipo_Dia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semana
+		dataType: int64
+		formatString: 0
+		lineageTag: e5ddeca8-0dc1-4d1a-af85-b1e45318b1b7
+		summarizeBy: sum
+		sourceColumn: Semana
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Calendario = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\projeto-final-cinema\data\processed\Dim_Calendario.csv"),[Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"Data", type date}, {"Ano", Int64.Type}, {"Num_Mes", Int64.Type}, {"Mes", type text}, {"Dia", Int64.Type}, {"Num_Dia_Semana", Int64.Type}, {"Dia_Semana", type text}, {"Tipo_Dia", type text}, {"Semana", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

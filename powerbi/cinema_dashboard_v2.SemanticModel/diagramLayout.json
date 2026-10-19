@@ -1,0 +1,113 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 5
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 970.99873196992212,
+            "y": 334.97595905922276
+          },
+          "nodeIndex": "Dim_Calendario",
+          "nodeLineageTag": "8ec804fb-8369-402d-a5f9-06e3e04aa24a",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 674.998731969922,
+            "y": 446.98050572773582
+          },
+          "nodeIndex": "Dim_Filme",
+          "nodeLineageTag": "7b7b0289-9834-4fc4-b077-d39ed5fe1874",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 540.07805351207708
+          },
+          "nodeIndex": "Dim_Sala",
+          "nodeLineageTag": "db308944-4540-494d-9e44-63f8aa880703",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 363.91140844279215,
+            "y": 171.73466122602923
+          },
+          "nodeIndex": "Fato_Sessao",
+          "nodeLineageTag": "a00d688c-cf3f-40e4-b600-72304e210747",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 38.188008285662136,
+            "y": 0
+          },
+          "nodeIndex": "Fato_Venda_Bomboniere",
+          "nodeLineageTag": "9a76c999-353d-4849-a8f7-15f609f11bbc",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 352.68444694479814,
+            "y": 694.95191811844541
+          },
+          "nodeIndex": "Fato_Venda_Ingresso",
+          "nodeLineageTag": "27eee0f6-fe31-4bfa-8858-6ca921a0c905",
+          "size": {
+            "height": 286,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1216.81072368426,
+            "y": 438.4759590592227
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "86e75b12-4fd3-4003-a03f-c5f6cc331d51",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 60,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

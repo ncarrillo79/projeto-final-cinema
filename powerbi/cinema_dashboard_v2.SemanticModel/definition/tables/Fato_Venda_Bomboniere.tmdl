@@ -1,0 +1,78 @@
+table Fato_Venda_Bomboniere
+	lineageTag: 9a76c999-353d-4849-a8f7-15f609f11bbc
+
+	column ID_Venda_Bomboniere
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b33e7ba-ca68-499c-9e08-5e33f44c1fec
+		summarizeBy: sum
+		sourceColumn: ID_Venda_Bomboniere
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Sessao
+		dataType: int64
+		formatString: 0
+		lineageTag: dc94d07b-02a4-4a84-ba1c-7846ea6be623
+		summarizeBy: none
+		sourceColumn: ID_Sessao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item_Comprado
+		dataType: string
+		lineageTag: 262aab7f-9ce8-4aee-9d42-e3a73d966d77
+		summarizeBy: none
+		sourceColumn: Item_Comprado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantidade
+		dataType: int64
+		formatString: 0
+		lineageTag: 94d7b052-c830-4d80-ae1e-4c7fdc520cfa
+		summarizeBy: sum
+		sourceColumn: Quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valor_Total
+		dataType: int64
+		formatString: 0
+		lineageTag: ed2855b1-a28d-4823-8081-56fe0a4362d0
+		summarizeBy: sum
+		sourceColumn: Valor_Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column Preco_Unitario
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ddb7dfe-2ec6-4d69-a9e4-d667549494e1
+		summarizeBy: sum
+		sourceColumn: Preco_Unitario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categoria_Item
+		dataType: string
+		lineageTag: 4f07d47a-7486-4ca4-9ab6-54d225ea27a6
+		summarizeBy: none
+		sourceColumn: Categoria_Item
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Venda_Bomboniere = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\projeto-final-cinema\data\processed\Fato_Venda_Bomboniere.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ID_Venda_Bomboniere", Int64.Type}, {"ID_Sessao", Int64.Type}, {"Item_Comprado", type text}, {"Quantidade", Int64.Type}, {"Valor_Total", Int64.Type}, {"Preco_Unitario", Int64.Type}, {"Categoria_Item", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

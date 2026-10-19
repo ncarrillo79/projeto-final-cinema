@@ -1,0 +1,96 @@
+table Fato_Venda_Ingresso
+	lineageTag: 27eee0f6-fe31-4bfa-8858-6ca921a0c905
+
+	column ID_Venda_Ingresso
+		dataType: int64
+		formatString: 0
+		lineageTag: de9db3ee-4d56-4006-9080-3acdd5fa69c8
+		summarizeBy: sum
+		sourceColumn: ID_Venda_Ingresso
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Sessao
+		dataType: int64
+		formatString: 0
+		lineageTag: d34e9ef5-4250-4fed-b9e3-b77c35ec4c85
+		summarizeBy: none
+		sourceColumn: ID_Sessao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Ingresso
+		dataType: string
+		lineageTag: bc0ba60e-3c46-4266-baed-c6ce77fe1398
+		summarizeBy: none
+		sourceColumn: Tipo_Ingresso
+
+		annotation SummarizationSetBy = Automatic
+
+	column Canal_Venda
+		dataType: string
+		lineageTag: 449d44ac-2dbf-4109-959b-72be3db9bb56
+		summarizeBy: none
+		sourceColumn: Canal_Venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Venda
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 09dae19b-b76e-4117-a207-04de6ccedc02
+		summarizeBy: none
+		sourceColumn: Data_Venda
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valor_Pago
+		dataType: double
+		lineageTag: 4b305027-3f92-4c07-9a63-0b76ebc26ba2
+		summarizeBy: sum
+		sourceColumn: Valor_Pago
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Antecedencia_Horas
+		dataType: double
+		lineageTag: 67a243cc-2532-4d8b-bb82-ae1bb6c432cd
+		summarizeBy: sum
+		sourceColumn: Antecedencia_Horas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Faixa_Antecedencia
+		dataType: string
+		lineageTag: 0e294a02-348c-44a1-bf66-19b9cfdfdfd7
+		summarizeBy: none
+		sourceColumn: Faixa_Antecedencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Canal
+		dataType: string
+		lineageTag: 5cf3d286-ddf1-41c8-bfee-bd41d13b4d67
+		summarizeBy: none
+		sourceColumn: Tipo_Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Venda_Ingresso = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\projeto-final-cinema\data\processed\Fato_Venda_Ingresso.csv"),[Delimiter=",", Columns=9, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ID_Venda_Ingresso", Int64.Type}, {"ID_Sessao", Int64.Type}, {"Tipo_Ingresso", type text}, {"Canal_Venda", type text}, {"Data_Venda", type datetime}, {"Valor_Pago", type number}, {"Antecedencia_Horas", type number}, {"Faixa_Antecedencia", type text}, {"Tipo_Canal", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

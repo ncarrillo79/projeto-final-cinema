@@ -1,0 +1,109 @@
+table Fato_Sessao
+	lineageTag: a00d688c-cf3f-40e4-b600-72304e210747
+
+	column ID_Sessao
+		dataType: int64
+		formatString: 0
+		lineageTag: 79c2768a-bdaa-4303-80d1-ae92b8682e50
+		summarizeBy: none
+		sourceColumn: ID_Sessao
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Filme
+		dataType: int64
+		formatString: 0
+		lineageTag: 77f18999-522b-4971-b92b-20e65ca034d6
+		summarizeBy: none
+		sourceColumn: ID_Filme
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Sala
+		dataType: int64
+		formatString: 0
+		lineageTag: 9151f574-5849-4508-99a6-13ece345eccf
+		summarizeBy: none
+		sourceColumn: ID_Sala
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Hora_Sessao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 248281b3-55a7-420c-8137-e0a13a4ad760
+		summarizeBy: none
+		sourceColumn: Data_Hora_Sessao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Preco_Base
+		dataType: int64
+		formatString: 0
+		lineageTag: 28bb728f-e3d0-47fe-926b-66c9ecb534c6
+		summarizeBy: sum
+		sourceColumn: Preco_Base
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9f7cd6cb-7b76-4edf-aa43-75b4c831d51a
+		summarizeBy: none
+		sourceColumn: Data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Hora
+		dataType: dateTime
+		formatString: Short Time
+		lineageTag: 91989806-5b64-4d06-b266-13cc6d63624c
+		summarizeBy: none
+		sourceColumn: Hora
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Faixa_Horaria
+		dataType: string
+		lineageTag: 5cfd0aa2-a5bf-4cb6-9cf3-a63fdfe9fda4
+		summarizeBy: none
+		sourceColumn: Faixa_Horaria
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dias_Em_Cartaz
+		dataType: int64
+		formatString: 0
+		lineageTag: 257d18f4-36a7-4d90-b709-8fbbd2fa403e
+		summarizeBy: sum
+		sourceColumn: Dias_Em_Cartaz
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fase_Lancamento
+		dataType: string
+		lineageTag: 7345598c-e4b3-4d1f-a381-01e86b8396af
+		summarizeBy: none
+		sourceColumn: Fase_Lancamento
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fato_Sessao = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\projeto-final-cinema\data\processed\Fato_Sessao.csv"),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ID_Sessao", Int64.Type}, {"ID_Filme", Int64.Type}, {"ID_Sala", Int64.Type}, {"Data_Hora_Sessao", type datetime}, {"Preco_Base", Int64.Type}, {"Data", type date}, {"Hora", type time}, {"Faixa_Horaria", type text}, {"Dias_Em_Cartaz", Int64.Type}, {"Fase_Lancamento", type text}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

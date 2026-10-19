@@ -1,0 +1,20 @@
+relationship AutoDetected_68454900-48d1-414d-a92d-01af69f830e3
+	fromColumn: Fato_Sessao.ID_Filme
+	toColumn: Dim_Filme.ID_Filme
+
+relationship AutoDetected_87ee799c-0de5-48b2-aa92-d8e81bd7c3ef
+	fromColumn: Fato_Sessao.ID_Sala
+	toColumn: Dim_Sala.ID_Sala
+
+relationship AutoDetected_dc6ac92c-a106-4f3c-bd43-c1b071b3309c
+	fromColumn: Fato_Venda_Ingresso.ID_Sessao
+	toColumn: Fato_Sessao.ID_Sessao
+
+relationship AutoDetected_203aba66-a5da-4054-8c2a-af8ce2aa59cb
+	fromColumn: Fato_Venda_Bomboniere.ID_Sessao
+	toColumn: Fato_Sessao.ID_Sessao
+
+relationship fa33a6d2-91fc-6a17-d3d0-83027634a62b
+	fromColumn: Fato_Sessao.Data
+	toColumn: Dim_Calendario.Data
+

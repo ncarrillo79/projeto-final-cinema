@@ -1,0 +1,61 @@
+table Dim_Filme
+	lineageTag: 7b7b0289-9834-4fc4-b077-d39ed5fe1874
+
+	column ID_Filme
+		dataType: int64
+		formatString: 0
+		lineageTag: c72b494b-c0de-446a-8fba-397a5ac7b98b
+		summarizeBy: none
+		sourceColumn: ID_Filme
+
+		annotation SummarizationSetBy = Automatic
+
+	column Titulo
+		dataType: string
+		lineageTag: 9cf61bd7-d5e8-40fd-9661-d49dc9d08171
+		summarizeBy: none
+		sourceColumn: Titulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Genero
+		dataType: string
+		lineageTag: bda5f2aa-f040-4341-a007-72883994df3d
+		summarizeBy: none
+		sourceColumn: Genero
+
+		annotation SummarizationSetBy = Automatic
+
+	column Classificacao_Indicativa
+		dataType: string
+		lineageTag: 286dcbda-4ec0-4ab9-b2c0-244c0b604673
+		summarizeBy: none
+		sourceColumn: Classificacao_Indicativa
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Lancamento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 79723d61-2ed1-449b-b300-e68bac2b5118
+		summarizeBy: none
+		sourceColumn: Data_Lancamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Dim_Filme = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\projeto-final-cinema\data\processed\Dim_Filme.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"ID_Filme", Int64.Type}, {"Titulo", type text}, {"Genero", type text}, {"Classificacao_Indicativa", type text}, {"Data_Lancamento", type date}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
